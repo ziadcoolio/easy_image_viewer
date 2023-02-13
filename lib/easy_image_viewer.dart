@@ -20,6 +20,8 @@ export 'src/easy_image_view_pager.dart' show EasyImageViewPager;
 const _defaultBackgroundColor = Colors.black;
 const _defaultCloseButtonColor = Colors.white;
 const _defaultCloseButtonTooltip = 'Close';
+const _defaultCloseButtonIcon = Icons.close;
+const double _defaultCloseButtonMarginTop = 5.0;
 
 /// Shows the given [imageProvider] in a full-screen [Dialog].
 /// Setting [immersive] to false will prevent the top and bottom bars from being hidden.
@@ -41,6 +43,8 @@ Future<Dialog?> showImageViewer(
     Color backgroundColor = _defaultBackgroundColor,
     String closeButtonTooltip = _defaultCloseButtonTooltip,
     Color closeButtonColor = _defaultCloseButtonColor,
+    IconData closeButtonIcon = _defaultCloseButtonIcon,
+    double closeButtonMarginTop = _defaultCloseButtonMarginTop,
     bool useRootNavigator = false}) {
   return showImageViewerPager(context, SingleImageProvider(imageProvider),
       immersive: immersive,
@@ -52,7 +56,9 @@ Future<Dialog?> showImageViewer(
       doubleTapZoomable: doubleTapZoomable,
       backgroundColor: backgroundColor,
       closeButtonTooltip: closeButtonTooltip,
-      closeButtonColor: closeButtonColor);
+      closeButtonColor: closeButtonColor,
+      closeButtonIcon: closeButtonIcon,
+      closeButtonMarginTop: closeButtonMarginTop);
 }
 
 /// Shows the images provided by the [imageProvider] in a full-screen PageView [Dialog].
@@ -79,6 +85,8 @@ Future<Dialog?> showImageViewerPager(
     Color backgroundColor = _defaultBackgroundColor,
     String closeButtonTooltip = _defaultCloseButtonTooltip,
     Color closeButtonColor = _defaultCloseButtonColor,
+    IconData closeButtonIcon = _defaultCloseButtonIcon,
+    double closeButtonMarginTop = _defaultCloseButtonMarginTop,
     bool useRootNavigator = false}) {
   if (immersive) {
     // Hide top and bottom bars
@@ -99,6 +107,8 @@ Future<Dialog?> showImageViewerPager(
             doubleTapZoomable: doubleTapZoomable,
             backgroundColor: backgroundColor,
             closeButtonColor: closeButtonColor,
-            closeButtonTooltip: closeButtonTooltip);
+            closeButtonTooltip: closeButtonTooltip,
+            closeButtonIcon: closeButtonIcon,
+            closeButtonMarginTop: closeButtonMarginTop);
       });
 }
