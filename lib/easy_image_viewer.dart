@@ -40,9 +40,11 @@ Future<Dialog?> showImageViewer(
     bool doubleTapZoomable = false,
     Color backgroundColor = _defaultBackgroundColor,
     String closeButtonTooltip = _defaultCloseButtonTooltip,
-    Color closeButtonColor = _defaultCloseButtonColor}) {
+    Color closeButtonColor = _defaultCloseButtonColor,
+    bool useRootNavigator = false}) {
   return showImageViewerPager(context, SingleImageProvider(imageProvider),
       immersive: immersive,
+      useRootNavigator: useRootNavigator,
       onViewerDismissed:
           onViewerDismissed != null ? (_) => onViewerDismissed() : null,
       useSafeArea: useSafeArea,
@@ -76,7 +78,8 @@ Future<Dialog?> showImageViewerPager(
     bool doubleTapZoomable = false,
     Color backgroundColor = _defaultBackgroundColor,
     String closeButtonTooltip = _defaultCloseButtonTooltip,
-    Color closeButtonColor = _defaultCloseButtonColor}) {
+    Color closeButtonColor = _defaultCloseButtonColor,
+    bool useRootNavigator = false}) {
   if (immersive) {
     // Hide top and bottom bars
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
@@ -85,6 +88,7 @@ Future<Dialog?> showImageViewerPager(
   return showDialog<Dialog>(
       context: context,
       useSafeArea: useSafeArea,
+      useRootNavigator: useRootNavigator,
       builder: (context) {
         return EasyImageViewerDismissibleDialog(imageProvider,
             immersive: immersive,
